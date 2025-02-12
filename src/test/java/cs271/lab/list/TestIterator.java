@@ -20,7 +20,7 @@ public class TestIterator {
 
   @Before
   public void setUp() throws Exception {
-    LinkedList<Integer> list = new LinkedList<Integer>();
+    list = new LinkedList<Integer>();
     // TODO Question: Also try with a LinkedList - does it make any difference?
   }
 
@@ -74,8 +74,8 @@ public class TestIterator {
     list.add(66);
     final var i = list.iterator();
     while (i.hasNext()) {
-      if (i.next() == 77) {
-        list.remove(Integer.valueOf(77)); // TODO Question: What happens if you use list.remove(Integer.valueOf(77))?
+      if (i.next().equals(77)) {
+        i.remove(); // TODO Question: What happens if you use list.remove(Integer.valueOf(77))?
       }
     }
     // TODO using assertEquals and List.of, express which values are left in the list
@@ -96,9 +96,9 @@ public class TestIterator {
     double sum = 0;
     int n = 0;
     // TODO use an iterator and a while loop to compute the average (mean) of the values
-    Iterator<Integer> nums = list.iterator();
-    while (nums.hasNext()) {
-      sum += nums.next();
+    final var i = list.iterator();
+    while (i.hasNext()) {
+      sum += i.next();
       n++;
     }
     // (defined as the sum of the items divided by the number of items)
